@@ -1,0 +1,28 @@
+{
+  "gestionStockLivraisonApp": {
+    "lotCamion": {
+      "home": {
+        "title": "Lot Camions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Lot Camion",
+        "createOrEditLabel": "Create or edit a Lot Camion",
+        "notFound": "No Lot Camions found"
+      },
+      "created": "A new Lot Camion is created with identifier {{ param }}",
+      "updated": "A Lot Camion is updated with identifier {{ param }}",
+      "deleted": "A Lot Camion is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Lot Camion {{ id }}?"
+      },
+      "detail": {
+        "title": "Lot Camion"
+      },
+      "id": "ID",
+      "quantite": "Quantite",
+      "date": "Date",
+      "montantTotal": "Montant Total",
+      "produit": "Produit",
+      "camion": "Camion"
+    }
+  }
+}

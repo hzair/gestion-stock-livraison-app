@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="catalogProduit">
+      <h2 data-cy="catalogProduitDetailsHeading">
+        <span jhiTranslate="gestionStockLivraisonApp.catalogProduit.detail.title">Catalog Produit</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ catalogProduit.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogProduit.image">Image</span></dt>
+        <dd>
+          <div *ngIf="catalogProduit.image">
+            <a (click)="openFile(catalogProduit.image, catalogProduit.imageContentType)">
+              <img
+                [src]="'data:' + catalogProduit.imageContentType + ';base64,' + catalogProduit.image"
+                style="max-width: 100%"
+                alt="catalogProduit image"
+              />
+            </a>
+            {{ catalogProduit.imageContentType }}, {{ byteSize(catalogProduit.image) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogProduit.idFonc">Id Fonc</span></dt>
+        <dd>
+          <span>{{ catalogProduit.idFonc }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogProduit.designation">Designation</span></dt>
+        <dd>
+          <span>{{ catalogProduit.designation }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogProduit.description">Description</span></dt>
+        <dd>
+          <span>{{ catalogProduit.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogProduit.quantite">Quantite</span></dt>
+        <dd>
+          <span>{{ catalogProduit.quantite }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogProduit.prixAchatUnit">Prix Achat Unit</span></dt>
+        <dd>
+          <span>{{ catalogProduit.prixAchatUnit }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogProduit.prixVenteUnit">Prix Vente Unit</span></dt>
+        <dd>
+          <span>{{ catalogProduit.prixVenteUnit }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogProduit.prixVenteGros">Prix Vente Gros</span></dt>
+        <dd>
+          <span>{{ catalogProduit.prixVenteGros }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogProduit.date">Date</span></dt>
+        <dd>
+          <span>{{ catalogProduit.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogProduit.fournisseur">Fournisseur</span></dt>
+        <dd>
+          <div *ngIf="catalogProduit.fournisseur">
+            <a [routerLink]="['/fournisseur', catalogProduit.fournisseur?.id, 'view']">{{ catalogProduit.fournisseur?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogProduit.type">Type</span></dt>
+        <dd>
+          <div *ngIf="catalogProduit.type">
+            <a [routerLink]="['/catalog-type-produit', catalogProduit.type?.id, 'view']">{{ catalogProduit.type?.designation }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/catalog-produit', catalogProduit.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

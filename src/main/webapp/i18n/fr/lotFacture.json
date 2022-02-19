@@ -1,0 +1,29 @@
+{
+  "gestionStockLivraisonApp": {
+    "lotFacture": {
+      "home": {
+        "title": "LotFactures",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Lot Facture",
+        "createOrEditLabel": "Créer ou éditer un Lot Facture",
+        "notFound": "Aucun Lot Facture trouvé"
+      },
+      "created": "Un nouveau Lot Facture a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Lot Facture avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Lot Facture avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Lot Facture {{ id }} ?"
+      },
+      "detail": {
+        "title": "Lot Facture"
+      },
+      "id": "ID",
+      "quantite": "Quantite",
+      "date": "Date",
+      "montantTotal": "Montant Total",
+      "produit": "Produit",
+      "factureAchat": "Facture Achat",
+      "factureVente": "Facture Vente"
+    }
+  }
+}

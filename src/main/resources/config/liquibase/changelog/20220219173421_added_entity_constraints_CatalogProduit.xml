@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity CatalogProduit.
+    -->
+    <changeSet id="20220219173421-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="fournisseur_id"
+                                 baseTableName="catalog_produit"
+                                 constraintName="fk_catalog_produit__fournisseur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fournisseur"/>
+
+        <addForeignKeyConstraint baseColumnNames="type_id"
+                                 baseTableName="catalog_produit"
+                                 constraintName="fk_catalog_produit__type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="catalog_type_produit"/>
+    </changeSet>
+</databaseChangeLog>

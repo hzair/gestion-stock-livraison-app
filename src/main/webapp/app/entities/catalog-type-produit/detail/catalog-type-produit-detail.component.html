@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="catalogTypeProduit">
+      <h2 data-cy="catalogTypeProduitDetailsHeading">
+        <span jhiTranslate="gestionStockLivraisonApp.catalogTypeProduit.detail.title">Catalog Type Produit</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ catalogTypeProduit.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogTypeProduit.image">Image</span></dt>
+        <dd>
+          <div *ngIf="catalogTypeProduit.image">
+            <a (click)="openFile(catalogTypeProduit.image, catalogTypeProduit.imageContentType)">
+              <img
+                [src]="'data:' + catalogTypeProduit.imageContentType + ';base64,' + catalogTypeProduit.image"
+                style="max-width: 100%"
+                alt="catalogTypeProduit image"
+              />
+            </a>
+            {{ catalogTypeProduit.imageContentType }}, {{ byteSize(catalogTypeProduit.image) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogTypeProduit.idFonc">Id Fonc</span></dt>
+        <dd>
+          <span>{{ catalogTypeProduit.idFonc }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogTypeProduit.designation">Designation</span></dt>
+        <dd>
+          <span>{{ catalogTypeProduit.designation }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.catalogTypeProduit.description">Description</span></dt>
+        <dd>
+          <span>{{ catalogTypeProduit.description }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/catalog-type-produit', catalogTypeProduit.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

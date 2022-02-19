@@ -1,0 +1,44 @@
+{
+  "applications": "*",
+  "changelogDate": "20220219173427",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "camion",
+  "fields": [
+    {
+      "fieldName": "designation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "montantTotal",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Camion",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "designation",
+      "otherEntityName": "vendeur",
+      "otherEntityRelationshipName": "camion",
+      "ownerSide": true,
+      "relationshipName": "vendeur",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "lotCamion",
+      "otherEntityRelationshipName": "camion",
+      "relationshipName": "produits",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

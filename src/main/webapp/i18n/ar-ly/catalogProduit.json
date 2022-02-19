@@ -1,0 +1,34 @@
+{
+  "gestionStockLivraisonApp": {
+    "catalogProduit": {
+      "home": {
+        "title": "Catalog Produits",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Catalog Produit",
+        "createOrEditLabel": "Create or edit a Catalog Produit",
+        "notFound": "No Catalog Produits found"
+      },
+      "created": "A new Catalog Produit is created with identifier {{ param }}",
+      "updated": "A Catalog Produit is updated with identifier {{ param }}",
+      "deleted": "A Catalog Produit is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Catalog Produit {{ id }}?"
+      },
+      "detail": {
+        "title": "Catalog Produit"
+      },
+      "id": "ID",
+      "image": "Image",
+      "idFonc": "Id Fonc",
+      "designation": "Designation",
+      "description": "Description",
+      "quantite": "Quantite",
+      "prixAchatUnit": "Prix Achat Unit",
+      "prixVenteUnit": "Prix Vente Unit",
+      "prixVenteGros": "Prix Vente Gros",
+      "date": "Date",
+      "fournisseur": "Fournisseur",
+      "type": "Type"
+    }
+  }
+}
