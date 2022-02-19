@@ -1,0 +1,11 @@
+id;photo;photo_content_type;id_fonc;designation;description;montant;date;payee;client_id
+1;../fake-data/blob/hipster.png;image/png;Books;connect invoice deposit;Incredible;66257;2022-02-19T03:50:11;false;1
+2;../fake-data/blob/hipster.png;image/png;Cambridgeshire back-end circuit;salmon ivory;Languedoc-Roussillon;70401;2022-02-19T11:29:10;true;2
+3;../fake-data/blob/hipster.png;image/png;Colombie Agent;Administrateur;withdrawal Suisse du;30515;2022-02-19T08:09:44;false;3
+4;../fake-data/blob/hipster.png;image/png;systems card Exclusive;supply-chains;generate synthesizing Frozen;55774;2022-02-19T15:43:52;false;4
+5;../fake-data/blob/hipster.png;image/png;Personal;port Tasty;Card a c;14668;2022-02-18T17:51:52;true;5
+6;../fake-data/blob/hipster.png;image/png;Ameliorated withdrawal;structure Sports Berkshire;Shoes Avon;8650;2022-02-18T22:30:57;false;6
+7;../fake-data/blob/hipster.png;image/png;models withdrawal Sausages;wireless e-tailers Assistant;Manager;29229;2022-02-18T22:20:54;false;7
+8;../fake-data/blob/hipster.png;image/png;primary;systems;customized Account extensible;91230;2022-02-19T04:02:33;true;8
+9;../fake-data/blob/hipster.png;image/png;Saint-Dominique b;Baby;service-desk Rustic;4615;2022-02-19T10:49:19;false;9
+10;../fake-data/blob/hipster.png;image/png;Directeur monitor;Royale Granite Avon;yellow application Tomé-et-Principe;61548;2022-02-19T13:05:13;true;10

@@ -1,0 +1,32 @@
+{
+  "gestionStockLivraisonApp": {
+    "factureVente": {
+      "home": {
+        "title": "FactureVentes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Facture Vente",
+        "createOrEditLabel": "Créer ou éditer un Facture Vente",
+        "notFound": "Aucun Facture Vente trouvé"
+      },
+      "created": "Un nouveau Facture Vente a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Facture Vente avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Facture Vente avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Facture Vente {{ id }} ?"
+      },
+      "detail": {
+        "title": "Facture Vente"
+      },
+      "id": "ID",
+      "photo": "Photo",
+      "idFonc": "Id Fonc",
+      "designation": "Designation",
+      "description": "Description",
+      "montant": "Montant",
+      "date": "Date",
+      "payee": "Payee",
+      "produit": "Produit",
+      "client": "Client"
+    }
+  }
+}

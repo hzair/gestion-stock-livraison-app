@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="factureAchat">
+      <h2 data-cy="factureAchatDetailsHeading">
+        <span jhiTranslate="gestionStockLivraisonApp.factureAchat.detail.title">Facture Achat</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ factureAchat.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.factureAchat.photo">Photo</span></dt>
+        <dd>
+          <div *ngIf="factureAchat.photo">
+            <a (click)="openFile(factureAchat.photo, factureAchat.photoContentType)">
+              <img
+                [src]="'data:' + factureAchat.photoContentType + ';base64,' + factureAchat.photo"
+                style="max-width: 100%"
+                alt="factureAchat image"
+              />
+            </a>
+            {{ factureAchat.photoContentType }}, {{ byteSize(factureAchat.photo) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.factureAchat.idFonc">Id Fonc</span></dt>
+        <dd>
+          <span>{{ factureAchat.idFonc }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.factureAchat.designation">Designation</span></dt>
+        <dd>
+          <span>{{ factureAchat.designation }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.factureAchat.description">Description</span></dt>
+        <dd>
+          <span>{{ factureAchat.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.factureAchat.montant">Montant</span></dt>
+        <dd>
+          <span>{{ factureAchat.montant }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.factureAchat.date">Date</span></dt>
+        <dd>
+          <span>{{ factureAchat.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.factureAchat.payee">Payee</span></dt>
+        <dd>
+          <span>{{ factureAchat.payee }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.factureAchat.fournisseur">Fournisseur</span></dt>
+        <dd>
+          <div *ngIf="factureAchat.fournisseur">
+            <a [routerLink]="['/fournisseur', factureAchat.fournisseur?.id, 'view']">{{ factureAchat.fournisseur?.matricule }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/facture-achat', factureAchat.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "gestionStockLivraisonApp": {
+    "factureAchat": {
+      "home": {
+        "title": "Facture Achats",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Facture Achat",
+        "createOrEditLabel": "Create or edit a Facture Achat",
+        "notFound": "No Facture Achats found"
+      },
+      "created": "A new Facture Achat is created with identifier {{ param }}",
+      "updated": "A Facture Achat is updated with identifier {{ param }}",
+      "deleted": "A Facture Achat is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Facture Achat {{ id }}?"
+      },
+      "detail": {
+        "title": "Facture Achat"
+      },
+      "id": "ID",
+      "photo": "Photo",
+      "idFonc": "Id Fonc",
+      "designation": "Designation",
+      "description": "Description",
+      "montant": "Montant",
+      "date": "Date",
+      "payee": "Payee",
+      "produit": "Produit",
+      "fournisseur": "Fournisseur"
+    }
+  }
+}

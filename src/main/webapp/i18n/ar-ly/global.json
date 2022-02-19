@@ -7,6 +7,17 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "الكيانات",
+        "catalogTypeProduit": "Catalog Type Produit",
+        "catalogProduit": "Catalog Produit",
+        "factureAchat": "Facture Achat",
+        "factureVente": "Facture Vente",
+        "vendeur": "Vendeur",
+        "fournisseur": "Fournisseur",
+        "client": "Client",
+        "camion": "Camion",
+        "lotCamion": "Lot Camion",
+        "lotFacture": "Lot Facture",
+        "credit": "Credit",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

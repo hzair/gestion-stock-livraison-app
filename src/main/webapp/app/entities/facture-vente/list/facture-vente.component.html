@@ -1,0 +1,121 @@
+<div>
+  <h2 id="page-heading" data-cy="FactureVenteHeading">
+    <span jhiTranslate="gestionStockLivraisonApp.factureVente.home.title">Facture Ventes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="reset()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gestionStockLivraisonApp.factureVente.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-facture-vente"
+        [routerLink]="['/facture-vente/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gestionStockLivraisonApp.factureVente.home.createLabel"> Create a new Facture Vente </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="factureVentes?.length === 0">
+    <span jhiTranslate="gestionStockLivraisonApp.factureVente.home.notFound">No factureVentes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="factureVentes && factureVentes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="reset()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="photo">
+            <span jhiTranslate="gestionStockLivraisonApp.factureVente.photo">Photo</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="idFonc">
+            <span jhiTranslate="gestionStockLivraisonApp.factureVente.idFonc">Id Fonc</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="designation">
+            <span jhiTranslate="gestionStockLivraisonApp.factureVente.designation">Designation</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <span jhiTranslate="gestionStockLivraisonApp.factureVente.description">Description</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="montant">
+            <span jhiTranslate="gestionStockLivraisonApp.factureVente.montant">Montant</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="date">
+            <span jhiTranslate="gestionStockLivraisonApp.factureVente.date">Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="payee">
+            <span jhiTranslate="gestionStockLivraisonApp.factureVente.payee">Payee</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="client.matricule">
+            <span jhiTranslate="gestionStockLivraisonApp.factureVente.client">Client</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+        <tr *ngFor="let factureVente of factureVentes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/facture-vente', factureVente.id, 'view']">{{ factureVente.id }}</a>
+          </td>
+          <td>
+            <a *ngIf="factureVente.photo" (click)="openFile(factureVente.photo, factureVente.photoContentType)">
+              <img
+                [src]="'data:' + factureVente.photoContentType + ';base64,' + factureVente.photo"
+                style="max-height: 30px"
+                alt="factureVente image"
+              />
+            </a>
+            <span *ngIf="factureVente.photo">{{ factureVente.photoContentType }}, {{ byteSize(factureVente.photo) }}</span>
+          </td>
+          <td>{{ factureVente.idFonc }}</td>
+          <td>{{ factureVente.designation }}</td>
+          <td>{{ factureVente.description }}</td>
+          <td>{{ factureVente.montant }}</td>
+          <td>{{ factureVente.date | formatMediumDatetime }}</td>
+          <td>{{ factureVente.payee }}</td>
+          <td>
+            <div *ngIf="factureVente.client">
+              <a [routerLink]="['/client', factureVente.client?.id, 'view']">{{ factureVente.client?.matricule }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/facture-vente', factureVente.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/facture-vente', factureVente.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(factureVente)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

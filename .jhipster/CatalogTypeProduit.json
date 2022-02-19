@@ -1,0 +1,41 @@
+{
+  "applications": "*",
+  "changelogDate": "20220219173420",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "catalog_type_produit",
+  "fields": [
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "idFonc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "designation",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "CatalogTypeProduit",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "catalogProduit",
+      "otherEntityRelationshipName": "type",
+      "relationshipName": "catalogProduit",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

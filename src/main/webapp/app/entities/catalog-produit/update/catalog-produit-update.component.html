@@ -1,0 +1,286 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-catalog-produit-heading"
+        data-cy="CatalogProduitCreateUpdateHeading"
+        jhiTranslate="gestionStockLivraisonApp.catalogProduit.home.createOrEditLabel"
+      >
+        Create or edit a Catalog Produit
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionStockLivraisonApp.catalogProduit.image" for="field_image">Image</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('imageContentType')!.value + ';base64,' + editForm.get('image')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('image')!.value"
+              alt="catalogProduit image"
+            />
+            <div *ngIf="editForm.get('image')!.value" class="form-text text-danger clearfix">
+              <span class="pull-left">{{ editForm.get('imageContentType')!.value }}, {{ byteSize(editForm.get('image')!.value) }}</span>
+              <button
+                type="button"
+                (click)="clearInputImage('image', 'imageContentType', 'file_image')"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_image"
+              data-cy="image"
+              (change)="setFileData($event, 'image', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="image" id="field_image" data-cy="image" formControlName="image" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="imageContentType"
+            id="field_imageContentType"
+            formControlName="imageContentType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionStockLivraisonApp.catalogProduit.idFonc" for="field_idFonc">Id Fonc</label>
+          <input type="text" class="form-control" name="idFonc" id="field_idFonc" data-cy="idFonc" formControlName="idFonc" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionStockLivraisonApp.catalogProduit.designation" for="field_designation"
+            >Designation</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="designation"
+            id="field_designation"
+            data-cy="designation"
+            formControlName="designation"
+          />
+          <div *ngIf="editForm.get('designation')!.invalid && (editForm.get('designation')!.dirty || editForm.get('designation')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('designation')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionStockLivraisonApp.catalogProduit.description" for="field_description"
+            >Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionStockLivraisonApp.catalogProduit.quantite" for="field_quantite"
+            >Quantite</label
+          >
+          <input type="number" class="form-control" name="quantite" id="field_quantite" data-cy="quantite" formControlName="quantite" />
+          <div *ngIf="editForm.get('quantite')!.invalid && (editForm.get('quantite')!.dirty || editForm.get('quantite')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('quantite')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('quantite')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionStockLivraisonApp.catalogProduit.prixAchatUnit" for="field_prixAchatUnit"
+            >Prix Achat Unit</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="prixAchatUnit"
+            id="field_prixAchatUnit"
+            data-cy="prixAchatUnit"
+            formControlName="prixAchatUnit"
+          />
+          <div
+            *ngIf="
+              editForm.get('prixAchatUnit')!.invalid && (editForm.get('prixAchatUnit')!.dirty || editForm.get('prixAchatUnit')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('prixAchatUnit')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('prixAchatUnit')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionStockLivraisonApp.catalogProduit.prixVenteUnit" for="field_prixVenteUnit"
+            >Prix Vente Unit</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="prixVenteUnit"
+            id="field_prixVenteUnit"
+            data-cy="prixVenteUnit"
+            formControlName="prixVenteUnit"
+          />
+          <div
+            *ngIf="
+              editForm.get('prixVenteUnit')!.invalid && (editForm.get('prixVenteUnit')!.dirty || editForm.get('prixVenteUnit')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('prixVenteUnit')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('prixVenteUnit')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionStockLivraisonApp.catalogProduit.prixVenteGros" for="field_prixVenteGros"
+            >Prix Vente Gros</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="prixVenteGros"
+            id="field_prixVenteGros"
+            data-cy="prixVenteGros"
+            formControlName="prixVenteGros"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionStockLivraisonApp.catalogProduit.date" for="field_date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionStockLivraisonApp.catalogProduit.fournisseur" for="field_fournisseur"
+            >Fournisseur</label
+          >
+          <select class="form-control" id="field_fournisseur" data-cy="fournisseur" name="fournisseur" formControlName="fournisseur">
+            <option *ngIf="!editForm.get('fournisseur')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                fournisseurOption.id === editForm.get('fournisseur')!.value?.id ? editForm.get('fournisseur')!.value : fournisseurOption
+              "
+              *ngFor="let fournisseurOption of fournisseursSharedCollection; trackBy: trackFournisseurById"
+            >
+              {{ fournisseurOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['fournisseur'])!.invalid && (editForm.get(['fournisseur'])!.dirty || editForm.get(['fournisseur'])!.touched)"
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['fournisseur'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionStockLivraisonApp.catalogProduit.type" for="field_type">Type</label>
+          <select class="form-control" id="field_type" data-cy="type" name="type" formControlName="type">
+            <option *ngIf="!editForm.get('type')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                catalogTypeProduitOption.id === editForm.get('type')!.value?.id ? editForm.get('type')!.value : catalogTypeProduitOption
+              "
+              *ngFor="let catalogTypeProduitOption of catalogTypeProduitsSharedCollection; trackBy: trackCatalogTypeProduitById"
+            >
+              {{ catalogTypeProduitOption.designation }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['type'])!.invalid && (editForm.get(['type'])!.dirty || editForm.get(['type'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['type'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

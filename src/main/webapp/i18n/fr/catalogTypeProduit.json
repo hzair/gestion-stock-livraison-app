@@ -1,0 +1,28 @@
+{
+  "gestionStockLivraisonApp": {
+    "catalogTypeProduit": {
+      "home": {
+        "title": "CatalogTypeProduits",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Catalog Type Produit",
+        "createOrEditLabel": "Créer ou éditer un Catalog Type Produit",
+        "notFound": "Aucun Catalog Type Produit trouvé"
+      },
+      "created": "Un nouveau Catalog Type Produit a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Catalog Type Produit avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Catalog Type Produit avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Catalog Type Produit {{ id }} ?"
+      },
+      "detail": {
+        "title": "Catalog Type Produit"
+      },
+      "id": "ID",
+      "image": "Image",
+      "idFonc": "Id Fonc",
+      "designation": "Designation",
+      "description": "Description",
+      "catalogProduit": "Catalog Produit"
+    }
+  }
+}

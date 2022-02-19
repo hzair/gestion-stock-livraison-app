@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="lotFacture">
+      <h2 data-cy="lotFactureDetailsHeading"><span jhiTranslate="gestionStockLivraisonApp.lotFacture.detail.title">Lot Facture</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ lotFacture.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.lotFacture.quantite">Quantite</span></dt>
+        <dd>
+          <span>{{ lotFacture.quantite }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.lotFacture.date">Date</span></dt>
+        <dd>
+          <span>{{ lotFacture.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.lotFacture.montantTotal">Montant Total</span></dt>
+        <dd>
+          <span>{{ lotFacture.montantTotal }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.lotFacture.produit">Produit</span></dt>
+        <dd>
+          <div *ngIf="lotFacture.produit">
+            <a [routerLink]="['/catalog-produit', lotFacture.produit?.id, 'view']">{{ lotFacture.produit?.designation }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.lotFacture.factureAchat">Facture Achat</span></dt>
+        <dd>
+          <div *ngIf="lotFacture.factureAchat">
+            <a [routerLink]="['/facture-achat', lotFacture.factureAchat?.id, 'view']">{{ lotFacture.factureAchat?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gestionStockLivraisonApp.lotFacture.factureVente">Facture Vente</span></dt>
+        <dd>
+          <div *ngIf="lotFacture.factureVente">
+            <a [routerLink]="['/facture-vente', lotFacture.factureVente?.id, 'view']">{{ lotFacture.factureVente?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/lot-facture', lotFacture.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

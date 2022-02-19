@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity LotCamion.
+    -->
+    <changeSet id="20220219173428-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="produit_id"
+                                 baseTableName="lot_camion"
+                                 constraintName="fk_lot_camion__produit_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="catalog_produit"/>
+
+        <addForeignKeyConstraint baseColumnNames="camion_id"
+                                 baseTableName="lot_camion"
+                                 constraintName="fk_lot_camion__camion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="camion"/>
+    </changeSet>
+</databaseChangeLog>

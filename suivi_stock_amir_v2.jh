@@ -1,0 +1,142 @@
+
+entity CatalogTypeProduit {
+    image ImageBlob,
+    idFonc String,
+    designation String required,
+    description String,
+}
+
+entity CatalogProduit {
+    image ImageBlob,
+    idFonc String,
+    designation String required,
+    description String,
+    quantite Integer required,
+    prixAchatUnit Long required,
+    prixVenteUnit Long required,
+    prixVenteGros Long,
+    date Instant
+}
+
+entity FactureAchat {
+    photo ImageBlob,
+    idFonc String,
+    designation String required,
+    description String,
+    montant Long required,
+    date Instant,
+    payee Boolean,
+}
+
+entity FactureVente {
+    photo ImageBlob,
+    idFonc String,
+    designation String required,
+    description String,
+    montant Long required,
+    date Instant,
+    payee Boolean,
+}
+
+entity Vendeur {
+	image ImageBlob
+    matricule String required,
+    designation String required,
+	nom String,
+	prenom String,
+	email String,
+    adresse String,
+	phoneNumber String,
+    salaire Long,
+}
+
+entity Fournisseur {
+	image ImageBlob
+    matricule String required,
+    designation String required,
+	nom String,
+	prenom String,
+	email String,
+	phoneNumber String,
+    adresse String,
+}
+
+entity Client {
+	image ImageBlob
+    matricule String required,
+    designation String required,
+	nom String,
+	prenom String,
+	email String,
+	phoneNumber String,
+    adresse String,
+}
+
+entity Camion {
+	designation String,
+    date Instant,
+    montantTotal Long
+}
+
+entity LotCamion {
+	quantite Integer,
+    date Instant,
+    montantTotal Long
+}
+
+entity LotFacture {
+	quantite Integer,
+    date Instant,
+    montantTotal Long
+}
+
+entity Credit {
+	montant Long,
+    designation String,
+    date Instant
+}
+
+
+relationship OneToOne {
+	Camion{vendeur(designation) required} to Vendeur,
+    Credit{vendeur(designation) required} to Vendeur,
+    Credit{client(designation) required} to Client
+    
+}
+
+relationship OneToMany {
+	CatalogTypeProduit to CatalogProduit{type(designation) required },
+	Camion{produits} to LotCamion{camion(designation) required },
+    Fournisseur{factures} to FactureAchat{fournisseur(matricule) required },
+    Client{factures} to FactureVente{client(matricule) required },
+    FactureAchat{produit(designation) required} to LotFacture,
+    FactureVente{produit(designation) required} to LotFacture
+}
+
+relationship ManyToOne {
+	CatalogProduit{fournisseur required} to Fournisseur,
+    LotCamion{produit(designation) required} to CatalogProduit,
+    LotFacture{produit(designation) required} to CatalogProduit
+    
+}
+
+//relationship ManyToMany {
+//	Facture{produit(designation) required} to LotFacture
+//}
+
+
+// Set pagination options
+paginate Vendeur, Client, Fournisseur, CatalogProduit with infinite-scroll
+paginate Credit, LotCamion, LotFacture, Camion with infinite-scroll
+paginate FactureAchat, FactureVente, CatalogTypeProduit with infinite-scroll
+//paginate Job with pagination 
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl except Employee, Job
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

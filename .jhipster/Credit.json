@@ -1,0 +1,47 @@
+{
+  "applications": "*",
+  "changelogDate": "20220219173430",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "credit",
+  "fields": [
+    {
+      "fieldName": "montant",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "designation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Credit",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "designation",
+      "otherEntityName": "vendeur",
+      "otherEntityRelationshipName": "credit",
+      "ownerSide": true,
+      "relationshipName": "vendeur",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "designation",
+      "otherEntityName": "client",
+      "otherEntityRelationshipName": "credit",
+      "ownerSide": true,
+      "relationshipName": "client",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -15,7 +15,25 @@
     <property name="datetimeType" value="datetime" dbms="oracle, mssql, postgresql, h2"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173420_added_entity_CatalogTypeProduit.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173421_added_entity_CatalogProduit.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173422_added_entity_FactureAchat.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173423_added_entity_FactureVente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173424_added_entity_Vendeur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173425_added_entity_Fournisseur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173426_added_entity_Client.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173427_added_entity_Camion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173428_added_entity_LotCamion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173429_added_entity_LotFacture.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173430_added_entity_Credit.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20220219173421_added_entity_constraints_CatalogProduit.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173422_added_entity_constraints_FactureAchat.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173423_added_entity_constraints_FactureVente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173427_added_entity_constraints_Camion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173428_added_entity_constraints_LotCamion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173429_added_entity_constraints_LotFacture.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220219173430_added_entity_constraints_Credit.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>
